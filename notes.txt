@@ -1,0 +1,15 @@
+Migrate sqlite to postgresql
+    - docker-compose build
+    - docker-compose run web python src/bookstore_project/manage.py migrate
+
+Start development environment
+    - docker-compose build
+    - docker-compose up
+
+Changes to models
+    - docker-compose run web python src/bookstore_project/manage.py makemigrations bookstore_api
+    - docker-compose run web python src/bookstore_project/manage.py migrate
+
+Create admin user
+    - winpty docker-compose run web python src/bookstore_project/manage.py createsuperuser
+
