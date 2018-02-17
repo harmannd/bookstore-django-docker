@@ -1,0 +1,55 @@
+Docker - ran on localhost:5000
+   - docker build -t hello .
+   - docker run -p 5000:80 hello
+   - docker container ls
+
+   - docker container stop 23k4jkljd3
+
+Django - ran on localhost:5000
+   - django-admin startproject mysite
+   - cd mysite
+   - py -3 manage.py runserver 5000
+
+Docker Django
+   - docker build -t hello .
+   - docker run -p 5000:80 hello
+   - docker container ls
+
+   - docker container stop 23k4jkljd3
+
+Docker Images
+   - docker images
+   - docker tag hello harmannd/bookstore:initial
+   - docker push harmannd/bookstore:initial
+   - docker run -p 5000:80 harmannd/bookstore:initial
+
+   - docker image rm $(docker image ls -a -q) --force
+
+Swarm 1 machine * containers
+   - docker swarm init
+   - docker stack deploy -c docker-compose.yml bookstore
+   - docker service ls
+   - docker service ps bookstore_web
+
+   - docker stack rm bookstore
+   - docker swarm leave --force
+
+Swarm 2 VM * containers
+   - docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm1
+   - docker-machine create -d hyperv --hyperv-virtual-switch "myswitch" myvm2
+   - docker-machine ls
+   - docker-machine ssh myvm1
+      - docker swarm init
+   - docker-machine ssh myvm2
+      - docker swarm join --token ......
+   - docker-machine env myvm1
+      - eval $("C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env myvm1)
+      - docker-machine ls
+   - docker stack deploy -c docker-compose.yml bookstore
+   - 192.168.0.29:5000 or 192.168.0.30:5000 live
+   - 192.168.0.29:8080 has visualizer
+
+   - docker stack rm bookstore
+   - eval $(docker-machine env -u)                  # Disconnect from vm shell
+   - docker-machine stop $(docker-machine ls -q)    # Stop all runnings VMs
+   - docker-machine rm $(docker-machine ls -q)      # Delete all VMs and their disk images
