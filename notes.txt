@@ -13,3 +13,5 @@ Changes to models
 Create admin user
     - winpty docker-compose run web python src/bookstore_project/manage.py createsuperuser
 
+Run tests
+    - winpty docker-compose run web python src/bookstore_project/manage.py test bookstore_api
