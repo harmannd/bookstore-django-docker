@@ -22,6 +22,7 @@ class Book(models.Model):
     pub_date = models.DateField()
     file_type = models.CharField(max_length=2, choices=FILE_TYPES, default=EBOOK)
     language = models.CharField(max_length=2, choices=LANGUAGES, default=ENGLISH)
+    summary = models.CharField(max_length=500)
 
     def __str__(self):
         return '{} by {}'.format(self.title, self.author)

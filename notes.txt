@@ -15,3 +15,7 @@ Create admin user
 
 Run tests
     - winpty docker-compose run web python src/bookstore_project/manage.py test bookstore_api
+
+Populate Database
+    - winpty docker-compose run web python src/bookstore_project/manage.py flush
+    - winpty docker-compose run web python src/bookstore_project/manage.py populate_db
