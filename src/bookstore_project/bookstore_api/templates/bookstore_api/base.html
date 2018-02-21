@@ -9,12 +9,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                {% include "bookstore_api/navbar.html" %}
-            </div>
-        </div>
-
+        {% include "bookstore_api/navbar.html" %}
         {% block content %}
         {% endblock %}
     </div>

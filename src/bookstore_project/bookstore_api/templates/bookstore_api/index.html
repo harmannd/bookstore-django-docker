@@ -3,13 +3,17 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h3>Search</h3>
+        <form id="search" action="/bookstore/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h1>Limit</h1>
+        <h1>Limit Results</h1>
         <h3>File Type</h3>
         <ul>
             {% for c,t in FILE_TYPES %}
