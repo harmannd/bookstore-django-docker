@@ -14,7 +14,7 @@ body {
  * Navbar
  */
 .navbar {
-    background-color: beige;
+    background-color: #FF9A33;
 }
 #nav-image {
     background: url(../images/bookshelf.jpg) center top;
@@ -27,7 +27,8 @@ body {
  * Search
  */
 #search {
-    background-color: beige;
+    background-color: #3398FF;
     padding-top: 10px;
     margin-left: 0px;
 }
+

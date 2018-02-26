@@ -5,37 +5,20 @@
     <div class="col-md-12">
         <form id="search" action="/bookstore/" method="post">
             {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
+            {{ search_form }}
+            <input type="submit" value="Submit" name="search">
         </form>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h1>Limit Results</h1>
-        <h3>File Type</h3>
-        <ul>
-            {% for c,t in FILE_TYPES %}
-                <li>{{ t }}</li>
-            {% endfor %}
-        </ul>
-        <h3>Language</h3>
-        <ul>
-            {% for c,t in LANGUAGES %}
-                <li>{{ t }}</li>
-            {% endfor %}
-        </ul>
-        <h3>Publish Date</h3>
+        <form id="filter" action="/bookstore/" method="post">
+            {% csrf_token %}
+            {{ filter_form }}
+            <input type="submit" value="Filter" name="filter">
+        </form>
     </div>
-    <div class="col-md-8">
-        <h1>Results</h1>
-        <ul>
-            {% for book in books %}
-                <li>{{ book }}</li>
-            {% endfor %}
-        </ul>
-        <h4>load more results?</h4>
-    </div>
+    {% include "bookstore_api/results.html" %}
 </div>
 {% endblock %}
