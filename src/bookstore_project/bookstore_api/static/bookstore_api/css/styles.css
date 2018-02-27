@@ -4,6 +4,8 @@
 body {
     width: 100%;
     margin: auto;
+    background-color: #edd9c0;
+    color: white;
 }
 .container-fluid {
     padding-left: 0px;
@@ -11,13 +13,22 @@ body {
 }
 ul {
     list-style: none;
+    padding-left: 20px;
 }
+#grey-text {
+    color: grey;
+    font-size: 13px;
+}
+
 
 /**
  * Navbar
  */
+.navbar-brand, .nav-link {
+    color: white;
+}
 .navbar {
-    background-color: #FF9A33;
+    background-color: #c9d8c5;
 }
 #nav-image {
     background: url(../images/bookshelf.jpg) center top;
@@ -30,22 +41,30 @@ ul {
  * Search
  */
 #search {
-    background-color: #3398FF;
+    background-color: #7d4627;
     padding-top: 10px;
-    margin-left: 0px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+/**
+ * Filter
+ */
+.section-filter {
+    background-color: #a8b6bf;
+    padding-left: 20px;
+}
+#filter > label {
+    font-size: 20px;
 }
 
 /**
  * Results
  */
 .link {
-    color: #FF9A33;
+    color: #7d4627;
 }
 #results-title {
     font-size: 20px;
     text-decoration: none;
-}
-#results-ftype {
-    color: grey;
-    font-size: 13px;
 }

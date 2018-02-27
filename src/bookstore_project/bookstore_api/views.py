@@ -6,13 +6,14 @@ from .models import Book
 from .forms import SearchForm, FilterForm
 
 def index(request):
+    # Post request
     if request.method == 'POST':
         search_form = SearchForm(request.POST)
         filter_form = FilterForm(request.POST)
         if 'btn-search' in request.POST and search_form.is_valid():
             search = search_form.cleaned_data.get('search')
             category = search_form.cleaned_data.get('category')
-
+            # Section to search
             if category == '1':
                 books = list(Book.objects.filter(title__icontains=search))
             elif category == '2':
@@ -36,18 +37,21 @@ def index(request):
                 if book.file_type in file_types and book.language in languages:
                     books.append(book)
         else:
-            books = get_list_or_404(Book)[:10]
+            books = get_list_or_404(Book)
+    # Get request
     else:
         search_form = SearchForm()
         filter_form = FilterForm()
         books = get_list_or_404(Book)[:10]
+
     return render(
         request,
         'bookstore_api/index.html',
         {   'Book': Book,
             'books': books,
             'search_form': search_form,
-            'filter_form': filter_form
+            'filter_form': filter_form,
+            'num_results': len(books)
         }
     )
 

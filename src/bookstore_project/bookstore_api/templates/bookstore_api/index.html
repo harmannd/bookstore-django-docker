@@ -6,17 +6,17 @@
         <form id="search" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ search_form }}
-            <input type="submit" value="Submit" name="btn-search">
+            <input class="btn btn-secondary" type="submit" value="Search" name="btn-search">
         </form>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 section-filter">
         <form id="filter" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ filter_form }}
-            <input type="submit" value="Filter" name="btn-filter">
+            <input class="btn btn-secondary" type="submit" value="Filter" name="btn-filter">
         </form>
     </div>
     {% include "bookstore_api/results.html" %}
