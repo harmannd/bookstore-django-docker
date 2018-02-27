@@ -9,6 +9,9 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
+ul {
+    list-style: none;
+}
 
 /**
  * Navbar
@@ -32,3 +35,17 @@ body {
     margin-left: 0px;
 }
 
+/**
+ * Results
+ */
+.link {
+    color: #FF9A33;
+}
+#results-title {
+    font-size: 20px;
+    text-decoration: none;
+}
+#results-ftype {
+    color: grey;
+    font-size: 13px;
+}

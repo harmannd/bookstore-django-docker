@@ -2,7 +2,12 @@
     <h1>Results</h1>
     <ul>
         {% for book in books %}
-            <li>{{ book }}</li>
+            <li class="d-flex flex-column">
+                <span id="results-ftype">{{ book.get_file_type_display }}</span>
+                <a id="results-title" class="link" href="{% url 'details' book.id %}">{{ book }}</a>
+                <span>{{ book.author }}</span>
+            </li>
+            <hr>
         {% endfor %}
     </ul>
     <h4>load more results?</h4>

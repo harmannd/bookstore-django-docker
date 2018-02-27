@@ -22,7 +22,7 @@ def index(request):
             if not languages:
                 for lang in Book.LANGUAGES:
                     languages.append(lang[0])
-
+            # Filter results
             books = []
             for book in Book.objects.all():
                 if book.file_type in file_types and book.language in languages:
@@ -34,7 +34,7 @@ def index(request):
     return render(
         request,
         'bookstore_api/index.html',
-        {
+        {   'Book': Book,
             'books': books,
             'search_form': search_form,
             'filter_form': filter_form

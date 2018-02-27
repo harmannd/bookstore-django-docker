@@ -25,6 +25,6 @@ class Book(models.Model):
     summary = models.CharField(max_length=500)
 
     def __str__(self):
-        return '{} by {}'.format(self.title, self.author)
+        return self.title
 
 
