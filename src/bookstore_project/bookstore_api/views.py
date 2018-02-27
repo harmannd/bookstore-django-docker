@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, \
     get_list_or_404
+from django.http import Http404
 
 from .models import Book
 from .forms import SearchForm, FilterForm
@@ -9,16 +10,23 @@ def index(request):
         search_form = SearchForm(request.POST)
         filter_form = FilterForm(request.POST)
         if 'search' in request.POST:
-            #books = get_list_or_404(Book.objects.filter(Book.title==search))
             books = get_list_or_404(Book)[:6]
-        #if a filter is selected
-        elif 'filter' in request.POST and filter_form.is_valid():
-            #determine which file_types
+        if 'filter' in request.POST and filter_form.is_valid():
             file_types = filter_form.cleaned_data.get('file_type')
-            books = get_list_or_404(Book.objects.filter(Book.file_type in file_types))[:12]
-        else:
-            #nothing filtered or searched
-            books = get_list_or_404(Book)[:10]
+            languages = filter_form.cleaned_data.get('language')
+            # No file type filter
+            if not file_types:
+                for ftype in Book.FILE_TYPES:
+                    file_types.append(ftype[0])
+            # No language filter
+            if not languages:
+                for lang in Book.LANGUAGES:
+                    languages.append(lang[0])
+
+            books = []
+            for book in Book.objects.all():
+                if book.file_type in file_types and book.language in languages:
+                    books.append(book)
     else:
         search_form = SearchForm()
         filter_form = FilterForm()
