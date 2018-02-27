@@ -6,7 +6,7 @@
         <form id="search" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ search_form }}
-            <input type="submit" value="Submit" name="search">
+            <input type="submit" value="Submit" name="btn-search">
         </form>
     </div>
 </div>
@@ -16,7 +16,7 @@
         <form id="filter" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ filter_form }}
-            <input type="submit" value="Filter" name="filter">
+            <input type="submit" value="Filter" name="btn-filter">
         </form>
     </div>
     {% include "bookstore_api/results.html" %}

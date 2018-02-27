@@ -9,9 +9,17 @@ def index(request):
     if request.method == 'POST':
         search_form = SearchForm(request.POST)
         filter_form = FilterForm(request.POST)
-        if 'search' in request.POST:
-            books = get_list_or_404(Book)[:6]
-        if 'filter' in request.POST and filter_form.is_valid():
+        if 'btn-search' in request.POST and search_form.is_valid():
+            search = search_form.cleaned_data.get('search')
+            category = search_form.cleaned_data.get('category')
+
+            if category == '1':
+                books = list(Book.objects.filter(title__icontains=search))
+            elif category == '2':
+                books = list(Book.objects.filter(author__icontains=search))
+            else:
+                books = get_list_or_404(Book)[:5]
+        elif 'btn-filter' in request.POST and filter_form.is_valid():
             file_types = filter_form.cleaned_data.get('file_type')
             languages = filter_form.cleaned_data.get('language')
             # No file type filter
@@ -27,6 +35,8 @@ def index(request):
             for book in Book.objects.all():
                 if book.file_type in file_types and book.language in languages:
                     books.append(book)
+        else:
+            books = get_list_or_404(Book)[:10]
     else:
         search_form = SearchForm()
         filter_form = FilterForm()
