@@ -1,15 +1,42 @@
 {% extends "bookstore_api/base.html" %}
 
 {% block content %}
-<div class="row">
+<div class="row details">
     <div class="col-md-8">
-        <h3>{{ book }}</h3>
-        <p>File type: {{ book.get_file_type_display }}</p>
-        <p>Title: {{ book.title }}</p>
-        <p>Author: {{ book.author }}</p>
-        <p>Published: {{ book.pub_date }}</p>
-        <p>Language: {{ book.get_language_display }}</p>
-        <p>Summary: {{ book.summary }}</p>
+        <li class="d-flex flex-column details-result">
+            <span id="grey-text">{{ book.get_file_type_display }}</span>
+            <a id="results-title" class="link" href="{% url 'details' book.id %}">{{ book }}</a>
+            <span>{{ book.author }}</span>
+        </li>
+
+        <h4>Details</h4>
+
+        <hr>
+
+        <div class="row">
+            <label class="col-sm-4">Title:</label>
+            <span class="col-sm-8">{{ book }}</span>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-4">Author:</label>
+            <span class="col-sm-8">{{ book.author }}</span>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-4">Language:</label>
+            <span class="col-sm-8">{{ book.get_language_display }}</span>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-4">Published:</label>
+            <span class="col-sm-8">{{ book.pub_date }}</span>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-4">Summary:</label>
+            <p class="col-sm-8">{{ book.summary }}</p>
+        </div>
     </div>
     <div class="col-md-4 grey">
         <h3>Similar Books</h3>
