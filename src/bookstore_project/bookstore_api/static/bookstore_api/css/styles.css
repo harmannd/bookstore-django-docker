@@ -99,3 +99,24 @@ input[type='submit']:hover {
     font-size: 20px;
     text-decoration: none;
 }
+
+/**
+ * Footer
+ */
+footer {
+    color: black;
+}
+.footer-links {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.footer-links a {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.copyright {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #a0ac9d;
+}
