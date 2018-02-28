@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Book(models.Model):
     EBOOK = 'EB'
     AUDIO = 'AU'
@@ -20,11 +21,17 @@ class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     pub_date = models.DateField()
-    file_type = models.CharField(max_length=2, choices=FILE_TYPES, default=EBOOK)
-    language = models.CharField(max_length=2, choices=LANGUAGES, default=ENGLISH)
+    file_type = models.CharField(
+        max_length=2,
+        choices=FILE_TYPES,
+        default=EBOOK
+    )
+    language = models.CharField(
+        max_length=2,
+        choices=LANGUAGES,
+        default=ENGLISH
+    )
     summary = models.CharField(max_length=500)
 
     def __str__(self):
         return self.title
-
-

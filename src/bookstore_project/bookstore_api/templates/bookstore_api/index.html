@@ -1,22 +1,33 @@
 {% extends "bookstore_api/base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 brown">
         <form id="search" action="/bookstore/" method="post">
             {% csrf_token %}
-            {{ search_form }}
-            <input class="btn btn-secondary" type="submit" value="Search" name="btn-search">
+            {{ search_form.non_field_errors }}
+            <div class="input-group input-group-lg">
+                {{ search_form.search.errors }}
+                {{ search_form.search|add_class:"form-control" }}
+
+                {{ search_form.category.errors }}
+                {{ search_form.category|add_class:"form-control" }}
+
+                <div class="input-group-append">
+                    <input class="btn tan" type="submit" value="Search" name="btn-search">
+                </div>
+            </div>
         </form>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4 section-filter">
+    <div class="col-md-4 form-filter grey">
         <form id="filter" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ filter_form }}
-            <input class="btn btn-secondary" type="submit" value="Filter" name="btn-filter">
+            <input class="filter-button" type="submit" value="Filter" name="btn-filter">
         </form>
     </div>
     {% include "bookstore_api/results.html" %}

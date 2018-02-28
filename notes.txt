@@ -5,6 +5,9 @@ Migrate sqlite to postgresql
 Start development environment
     - docker-compose build
     - docker-compose up
+    - docker-compose restart
+    - docker-compose down
+    - docker-compose logs
 
 Changes to models
     - docker-compose run web python src/bookstore_project/manage.py makemigrations bookstore_api

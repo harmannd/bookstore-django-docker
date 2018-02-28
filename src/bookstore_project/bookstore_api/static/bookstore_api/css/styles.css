@@ -4,12 +4,15 @@
 body {
     width: 100%;
     margin: auto;
-    background-color: #edd9c0;
     color: white;
+    font-family: Palatino;
 }
 .container-fluid {
     padding-left: 0px;
     padding-right: 0px;
+}
+.row {
+    margin-right: 0px;
 }
 ul {
     list-style: none;
@@ -19,16 +22,39 @@ ul {
     color: grey;
     font-size: 13px;
 }
-
+a, input[type='submit'] {
+    transition: all 0.1s;
+}
+a:hover {
+    color: #a8b6bf;
+}
+input[type='submit']:hover {
+    background-color: #c9d8c5;
+}
+.grey {
+    background-color: #a8b6bf;
+}
+.brown {
+    background-color: #7d4627;
+}
+.tan {
+    background-color: #edd9c0;
+}
+.green {
+    background-color: #c9d8c5;
+}
 
 /**
  * Navbar
  */
+.navbar-brand {
+    font-size: 30px;
+}
 .navbar-brand, .nav-link {
     color: white;
 }
-.navbar {
-    background-color: #c9d8c5;
+.nav-link {
+    font-size: 20px;
 }
 #nav-image {
     background: url(../images/bookshelf.jpg) center top;
@@ -41,21 +67,26 @@ ul {
  * Search
  */
 #search {
-    background-color: #7d4627;
     padding-top: 10px;
-    padding-left: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 /**
  * Filter
  */
-.section-filter {
-    background-color: #a8b6bf;
+.form-filter {
     padding-left: 20px;
+    padding-bottom: 10px;
 }
 #filter > label {
     font-size: 20px;
+}
+.filter-button {
+    background-color: white;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
 }
 
 /**

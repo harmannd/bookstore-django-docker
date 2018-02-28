@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <h3>{{ book }}</h3>
         <p>File type: {{ book.get_file_type_display }}</p>
         <p>Title: {{ book.title }}</p>
@@ -10,6 +10,13 @@
         <p>Published: {{ book.pub_date }}</p>
         <p>Language: {{ book.get_language_display }}</p>
         <p>Summary: {{ book.summary }}</p>
+    </div>
+    <div class="col-md-4 grey">
+        <h3>Similar Books</h3>
+        <ul>
+            <li>Book</li>
+            <li>Book</li>
+        </ul>
     </div>
 </div>
 {% endblock %}
