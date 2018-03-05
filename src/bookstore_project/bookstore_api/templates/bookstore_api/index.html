@@ -7,6 +7,7 @@
         <form id="search" action="/bookstore/" method="post">
             {% csrf_token %}
             {{ search_form.non_field_errors }}
+            {{ search_form.name_of_field.errors }}
             <div class="input-group input-group-lg">
                 {{ search_form.search.errors }}
                 {{ search_form.search|add_class:"form-control" }}
@@ -25,9 +26,31 @@
 <div class="row">
     <div class="col-md-4 form-filter grey">
         <form id="filter" action="/bookstore/" method="post">
-            {% csrf_token %}
-            {{ filter_form }}
-            <input class="filter-button" type="submit" value="Filter" name="btn-filter">
+            <div class="d-flex justify-content-start flex-column">
+                {% csrf_token %}
+                {{ filter_form.non_field_errors }}
+                {{ filter_form.name_of_field.errors }}
+
+                <a class="filter-button btn btn-secondary" data-toggle="collapse" href="#collapseFileTypes" role="button" aria-expanded="true" aria-controls="collapseFileTypes">
+                    File Types
+                    <i class="fas fa-angle-down"></i>
+                </a>
+                <div class="collapse show" id="collapseFileTypes">
+                    {{ filter_form.file_type }}
+                </div>
+
+                <a class="filter-button btn btn-secondary" data-toggle="collapse" href="#collapseLanguages" role="button" aria-expanded="true" aria-controls="collapseLanguages">
+                    Languages
+                    <i class="fas fa-angle-down"></i>
+                </a>
+                <div class="collapse show" id="collapseLanguages">
+                    {{ filter_form.language }}
+                </div>
+            </div>
+
+            <div class="d-flex align-items-end flex-column">
+                <input class="filter-submit btn btn-secondary tan" type="submit" value="Filter" name="btn-filter">
+            </div>
         </form>
     </div>
     {% include "bookstore_api/results.html" %}
